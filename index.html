@@ -72,6 +72,12 @@ header.top{border-bottom:1px solid var(--cp-border);background:var(--cp-bg-eleva
 .btn.primary:hover{background:var(--cp-accent-hover)}
 .btn.ghost{background:transparent;color:var(--cp-text-muted);border-color:var(--cp-border)}
 .btn.ghost:hover{border-color:var(--cp-border-strong);color:var(--cp-text)}
+.hero-cta{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.btn-lg{display:inline-block;padding:13px 26px;border-radius:.75rem;font-size:15px;font-weight:600;
+  background:var(--cp-accent);color:var(--cp-accent-fg);text-decoration:none;border:1px solid transparent;
+  transition:background .15s ease,transform .15s ease}
+.btn-lg:hover{background:var(--cp-accent-hover);transform:translateY(-1px)}
+.cta-note{font-size:12.5px;color:var(--cp-text-muted)}
 .install{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;
   padding:26px;margin-bottom:48px}
 .install h2{margin:0 0 6px;font-size:21px}
@@ -106,6 +112,10 @@ footer{border-top:1px solid var(--cp-border);padding:26px 0 44px;color:var(--cp-
       <div class="stat"><b>15</b><span>documents</span></div>
       <div class="stat"><b>261 KB</b><span>of procedure</span></div>
     </div>
+    <div class="hero-cta">
+      <a class="btn-lg" href="dist/all-skills.md" download="all-skills.md">⤓ Download all skills — single .md (264 KB)</a>
+      <span class="cta-note">One self-contained file. Every skill, every reference, inlined.</span>
+    </div>
   </section>
 
   <div class="toolbar"><input id="q" type="search" placeholder="Filter skills…" autocomplete="off"></div>
@@ -119,7 +129,8 @@ footer{border-top:1px solid var(--cp-border);padding:26px 0 44px;color:var(--cp-
         <ul class="points"><li>The widget binding contract — <code>openai/outputTemplate</code> on the tool descriptor</li><li>Dataverse S2S client with the cache and encoding traps solved</li><li><code>window.openai</code> host bridge, single-file bundling, dark mode</li><li>Graph app-catalog publishing and every error you will hit</li><li>Revertible write journal so a demo never corrupts shared data</li></ul>
         <details class="files"><summary>6 files · 71 KB</summary><ul><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/SKILL.md" target="_blank" rel="noopener"><span class="fi">◆</span>SKILL.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/agent-package.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/agent-package.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/demo-safety.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/demo-safety.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/deploy.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/deploy.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/mcp-server.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/mcp-server.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/widget.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/widget.md</a></li></ul></details>
         <div class="actions">
-          <a class="btn primary" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/SKILL.md" target="_blank" rel="noopener">View skill</a>
+          <a class="btn primary" href="dist/copilot-mcp-app.md" download="copilot-mcp-app.md">⤓ Download .md</a>
+          <a class="btn ghost" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/SKILL.md" target="_blank" rel="noopener">View</a>
           <button class="btn ghost" data-copy="copilot-mcp-app">Copy install</button>
         </div>
       </article>
@@ -132,7 +143,8 @@ footer{border-top:1px solid var(--cp-border);padding:26px 0 44px;color:var(--cp-
         <ul class="points"><li>Tables, columns, relationships and form XML surgery</li><li>Model-driven apps, sitemaps and business process flows</li><li>Power Automate cloud flows and Copilot Studio agents</li><li>Custom HTML web resources reading live Dataverse data</li><li>PCF controls, solution lifecycle and demo reset</li></ul>
         <details class="files"><summary>6 files · 115 KB</summary><ul><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/SKILL.md" target="_blank" rel="noopener"><span class="fi">◆</span>SKILL.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/ai-agents.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/ai-agents.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/forms-schema-apps.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/forms-schema-apps.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/pcf.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/pcf.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/power-automate.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/power-automate.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/web-resources.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/web-resources.md</a></li></ul></details>
         <div class="actions">
-          <a class="btn primary" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/SKILL.md" target="_blank" rel="noopener">View skill</a>
+          <a class="btn primary" href="dist/build-d365.md" download="build-d365.md">⤓ Download .md</a>
+          <a class="btn ghost" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/SKILL.md" target="_blank" rel="noopener">View</a>
           <button class="btn ghost" data-copy="build-d365">Copy install</button>
         </div>
       </article>
@@ -145,7 +157,8 @@ footer{border-top:1px solid var(--cp-border);padding:26px 0 44px;color:var(--cp-
         <ul class="points"><li>Accounts, contacts and custom columns</li><li>Segments and real-time journey orchestration</li><li>Branded emails, content blocks and templates</li><li>Marketing SMS and push notifications</li></ul>
         <details class="files"><summary>1 file · 29 KB</summary><ul><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/cij-marketing/SKILL.md" target="_blank" rel="noopener"><span class="fi">◆</span>SKILL.md</a></li></ul></details>
         <div class="actions">
-          <a class="btn primary" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/cij-marketing/SKILL.md" target="_blank" rel="noopener">View skill</a>
+          <a class="btn primary" href="dist/cij-marketing.md" download="cij-marketing.md">⤓ Download .md</a>
+          <a class="btn ghost" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/cij-marketing/SKILL.md" target="_blank" rel="noopener">View</a>
           <button class="btn ghost" data-copy="cij-marketing">Copy install</button>
         </div>
       </article>
@@ -158,7 +171,8 @@ footer{border-top:1px solid var(--cp-border);padding:26px 0 44px;color:var(--cp-
         <ul class="points"><li>Trim dead time without faking motion</li><li>Narration-synced cuts with GPT-Realtime voiceover</li><li>Original royalty-free music beds</li><li>Branded outros and final MP4 validation</li></ul>
         <details class="files"><summary>2 files · 44 KB</summary><ul><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/demo-video-producer/SKILL.md" target="_blank" rel="noopener"><span class="fi">◆</span>SKILL.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/demo-video-producer/narration-sync.md" target="_blank" rel="noopener"><span class="fi">◇</span>narration-sync.md</a></li></ul></details>
         <div class="actions">
-          <a class="btn primary" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/demo-video-producer/SKILL.md" target="_blank" rel="noopener">View skill</a>
+          <a class="btn primary" href="dist/demo-video-producer.md" download="demo-video-producer.md">⤓ Download .md</a>
+          <a class="btn ghost" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/demo-video-producer/SKILL.md" target="_blank" rel="noopener">View</a>
           <button class="btn ghost" data-copy="demo-video-producer">Copy install</button>
         </div>
       </article></section>
