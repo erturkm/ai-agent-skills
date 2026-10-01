@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Agent Skills</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2712%27 fill=%27%23b11f4b%27/%3E%3C/svg%3E">
+<style>
+:root {
+  color-scheme: light;
+  --cp-bg:#ffffff; --cp-bg-elevated:#ffffff; --cp-surface:#ffffff; --cp-surface-soft:#f8f8f8;
+  --cp-border:#dedede; --cp-border-strong:#919191; --cp-text:#242424; --cp-text-muted:#5c5c5c;
+  --cp-text-soft:#6f6f6f; --cp-accent:#b11f4b; --cp-accent-hover:#9a1a41;
+  --cp-accent-soft:rgba(177,31,75,0.08); --cp-accent-fg:#ffffff; --cp-success:#16a34a;
+  --cp-danger:#dc2626; --cp-warning:#f59e0b; --cp-link:#0078d4;
+  --cp-shadow:0 18px 48px rgba(0,0,0,0.12); --cp-overlay:rgba(255,255,255,0.8);
+  --cp-panel:rgba(255,255,255,0.86); --cp-panel-strong:rgba(255,255,255,0.96);
+  --cp-sheen:rgba(255,255,255,0.55); --cp-highlight:rgba(177,31,75,0.12);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cp-bg);color:var(--cp-text);
+  font-family:"Segoe UI",Aptos,Calibri,-apple-system,BlinkMacSystemFont,sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased}
+code,pre{font-family:Consolas,"Courier New",Courier,monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header.top{border-bottom:1px solid var(--cp-border);background:var(--cp-bg-elevated)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--cp-accent)}
+.top a{color:var(--cp-text-muted);text-decoration:none;font-size:14px}
+.top a:hover{color:var(--cp-accent)}
+.hero{padding:56px 0 32px}
+.hero h1{margin:0 0 12px;font-size:40px;line-height:1.15;letter-spacing:-.02em}
+.hero p{margin:0;max-width:62ch;color:var(--cp-text-muted);font-size:17px}
+.stats{display:flex;gap:28px;margin-top:24px;flex-wrap:wrap}
+.stat b{display:block;font-size:22px}
+.stat span{font-size:13px;color:var(--cp-text-soft)}
+.toolbar{display:flex;gap:12px;align-items:center;padding:8px 0 28px;flex-wrap:wrap}
+#q{flex:1;min-width:240px;padding:10px 14px;border:1px solid var(--cp-border);
+  border-radius:.625rem;background:var(--cp-surface);color:var(--cp-text);font-size:14px;
+  font-family:inherit}
+#q:focus{outline:none;border-color:var(--cp-accent);box-shadow:0 0 0 3px var(--cp-accent-soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px;padding-bottom:56px}
+.card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;padding:22px;
+  display:flex;flex-direction:column;gap:14px;
+  box-shadow:0 0 2px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.14);
+  transition:border-color .15s ease,transform .15s ease}
+.card:hover{border-color:var(--cp-border-strong);transform:translateY(-2px)}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.card h3{margin:0 0 4px;font-size:19px;letter-spacing:-.01em}
+.slug{font-size:12.5px;color:var(--cp-accent);background:var(--cp-accent-soft);
+  padding:2px 7px;border-radius:5px}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--cp-text-soft);
+  border:1px solid var(--cp-border);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.blurb{margin:0;font-size:14.5px;color:var(--cp-text-muted)}
+.points{margin:0 0 2px;padding-left:18px;font-size:13.5px;color:var(--cp-text-soft);display:grid;gap:5px}
+.points code{font-size:12.5px;background:var(--cp-surface-soft);padding:1px 5px;border-radius:4px;
+  color:var(--cp-text-muted)}
+.files{border-top:1px solid var(--cp-border);padding-top:12px;font-size:13px;margin-top:auto}
+.files summary{cursor:pointer;color:var(--cp-text-muted);user-select:none}
+.files summary:hover{color:var(--cp-accent)}
+.files ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:5px}
+.files a{color:var(--cp-link);text-decoration:none;font-size:13px;
+  display:flex;align-items:center;gap:7px}
+.files a:hover{text-decoration:underline}
+.fi{color:var(--cp-text-soft);font-size:10px}
+.actions{display:flex;gap:9px;padding-top:4px}
+.btn{flex:1;text-align:center;padding:9px 14px;border-radius:.625rem;font-size:13.5px;
+  font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;
+  font-family:inherit;transition:background .15s ease}
+.btn.primary{background:var(--cp-accent);color:var(--cp-accent-fg)}
+.btn.primary:hover{background:var(--cp-accent-hover)}
+.btn.ghost{background:transparent;color:var(--cp-text-muted);border-color:var(--cp-border)}
+.btn.ghost:hover{border-color:var(--cp-border-strong);color:var(--cp-text)}
+.install{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;
+  padding:26px;margin-bottom:48px}
+.install h2{margin:0 0 6px;font-size:21px}
+.install p{margin:0 0 16px;color:var(--cp-text-muted);font-size:14.5px}
+pre{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:10px;
+  padding:14px 16px;overflow-x:auto;font-size:13px;margin:0;color:var(--cp-text)}
+footer{border-top:1px solid var(--cp-border);padding:26px 0 44px;color:var(--cp-text-soft);font-size:13px}
+.empty{grid-column:1/-1;text-align:center;padding:48px;color:var(--cp-text-soft)}
+#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(90px);
+  background:var(--cp-panel-strong);border:1px solid var(--cp-border);color:var(--cp-text);
+  padding:11px 20px;border-radius:.625rem;box-shadow:var(--cp-shadow);font-size:14px;
+  transition:transform .22s ease;backdrop-filter:blur(8px)}
+#toast.on{transform:translateX(-50%) translateY(0)}
+@media(max-width:640px){.hero h1{font-size:30px}.hero{padding:36px 0 24px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap top-in">
+  <div class="brand"><span class="dot"></span> AI Agent Skills</div>
+  <nav><a href="https://github.com/erturkm/ai-agent-skills" target="_blank" rel="noopener">GitHub ↗</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Agent skills for Microsoft<br>Copilot &amp; Dynamics 365</h1>
+    <p>Reusable, battle-tested playbooks for building Microsoft 365 Copilot agents,
+       Dynamics 365 demos and Power Platform solutions. Each skill is a structured
+       instruction set an AI coding agent follows to do real engineering work —
+       not documentation, but procedure.</p>
+    <div class="stats">
+      <div class="stat"><b>4</b><span>skills</span></div>
+      <div class="stat"><b>15</b><span>documents</span></div>
+      <div class="stat"><b>261 KB</b><span>of procedure</span></div>
+    </div>
+  </section>
+
+  <div class="toolbar"><input id="q" type="search" placeholder="Filter skills…" autocomplete="off"></div>
+  <section class="grid" id="grid">
+      <article class="card" data-name="copilot mcp app copilot-mcp-app build a microsoft 365 copilot declarative agent backed by a remote mcp server that reads and writes live dataverse data and renders interactive d365-styled react widgets directly in chat.">
+        <header class="card-h">
+          <div><h3>Copilot MCP App</h3><code class="slug">/copilot-mcp-app</code></div>
+          <span class="tag">M365 Copilot</span>
+        </header>
+        <p class="blurb">Build a Microsoft 365 Copilot declarative agent backed by a remote MCP server that reads and writes live Dataverse data and renders interactive D365-styled React widgets directly in chat.</p>
+        <ul class="points"><li>The widget binding contract — <code>openai/outputTemplate</code> on the tool descriptor</li><li>Dataverse S2S client with the cache and encoding traps solved</li><li><code>window.openai</code> host bridge, single-file bundling, dark mode</li><li>Graph app-catalog publishing and every error you will hit</li><li>Revertible write journal so a demo never corrupts shared data</li></ul>
+        <details class="files"><summary>6 files · 71 KB</summary><ul><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/SKILL.md" target="_blank" rel="noopener"><span class="fi">◆</span>SKILL.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/agent-package.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/agent-package.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/demo-safety.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/demo-safety.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/deploy.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/deploy.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/mcp-server.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/mcp-server.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/reference/widget.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/widget.md</a></li></ul></details>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/copilot-mcp-app/SKILL.md" target="_blank" rel="noopener">View skill</a>
+          <button class="btn ghost" data-copy="copilot-mcp-app">Copy install</button>
+        </div>
+      </article>
+      <article class="card" data-name="build d365 build-d365 end-to-end dynamics 365 and power platform demo engineering via the dataverse web api — schema, forms, apps, flows, agents and pcf controls, built programmatically.">
+        <header class="card-h">
+          <div><h3>Build D365</h3><code class="slug">/build-d365</code></div>
+          <span class="tag">Dynamics 365</span>
+        </header>
+        <p class="blurb">End-to-end Dynamics 365 and Power Platform demo engineering via the Dataverse Web API — schema, forms, apps, flows, agents and PCF controls, built programmatically.</p>
+        <ul class="points"><li>Tables, columns, relationships and form XML surgery</li><li>Model-driven apps, sitemaps and business process flows</li><li>Power Automate cloud flows and Copilot Studio agents</li><li>Custom HTML web resources reading live Dataverse data</li><li>PCF controls, solution lifecycle and demo reset</li></ul>
+        <details class="files"><summary>6 files · 115 KB</summary><ul><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/SKILL.md" target="_blank" rel="noopener"><span class="fi">◆</span>SKILL.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/ai-agents.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/ai-agents.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/forms-schema-apps.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/forms-schema-apps.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/pcf.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/pcf.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/power-automate.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/power-automate.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/reference/web-resources.md" target="_blank" rel="noopener"><span class="fi">◇</span>reference/web-resources.md</a></li></ul></details>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/build-d365/SKILL.md" target="_blank" rel="noopener">View skill</a>
+          <button class="btn ghost" data-copy="build-d365">Copy install</button>
+        </div>
+      </article>
+      <article class="card" data-name="cij marketing cij-marketing build dynamics 365 customer insights – journeys real-time marketing assets: segments, branded emails, content blocks, sms, push and multi-touchpoint journeys.">
+        <header class="card-h">
+          <div><h3>CIJ Marketing</h3><code class="slug">/cij-marketing</code></div>
+          <span class="tag">Customer Insights</span>
+        </header>
+        <p class="blurb">Build Dynamics 365 Customer Insights – Journeys real-time marketing assets: segments, branded emails, content blocks, SMS, push and multi-touchpoint journeys.</p>
+        <ul class="points"><li>Accounts, contacts and custom columns</li><li>Segments and real-time journey orchestration</li><li>Branded emails, content blocks and templates</li><li>Marketing SMS and push notifications</li></ul>
+        <details class="files"><summary>1 file · 29 KB</summary><ul><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/cij-marketing/SKILL.md" target="_blank" rel="noopener"><span class="fi">◆</span>SKILL.md</a></li></ul></details>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/cij-marketing/SKILL.md" target="_blank" rel="noopener">View skill</a>
+          <button class="btn ghost" data-copy="cij-marketing">Copy install</button>
+        </div>
+      </article>
+      <article class="card" data-name="demo video producer demo-video-producer turn a screen recording into a polished demo video — narration-synchronised cuts, ai voiceover, original music beds and branded outros.">
+        <header class="card-h">
+          <div><h3>Demo Video Producer</h3><code class="slug">/demo-video-producer</code></div>
+          <span class="tag">Media</span>
+        </header>
+        <p class="blurb">Turn a screen recording into a polished demo video — narration-synchronised cuts, AI voiceover, original music beds and branded outros.</p>
+        <ul class="points"><li>Trim dead time without faking motion</li><li>Narration-synced cuts with GPT-Realtime voiceover</li><li>Original royalty-free music beds</li><li>Branded outros and final MP4 validation</li></ul>
+        <details class="files"><summary>2 files · 44 KB</summary><ul><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/demo-video-producer/SKILL.md" target="_blank" rel="noopener"><span class="fi">◆</span>SKILL.md</a></li><li><a href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/demo-video-producer/narration-sync.md" target="_blank" rel="noopener"><span class="fi">◇</span>narration-sync.md</a></li></ul></details>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/erturkm/ai-agent-skills/blob/main/skills/demo-video-producer/SKILL.md" target="_blank" rel="noopener">View skill</a>
+          <button class="btn ghost" data-copy="demo-video-producer">Copy install</button>
+        </div>
+      </article></section>
+
+  <section class="install">
+    <h2>Installing a skill</h2>
+    <p>Clone the repo and copy any skill folder into your agent's skills directory.
+       These work with GitHub Copilot CLI and Microsoft Scout.</p>
+<pre><code>git clone https://github.com/erturkm/ai-agent-skills.git
+cp -R ai-agent-skills/skills/copilot-mcp-app ~/.copilot/m-skills/</code></pre>
+    <p style="margin:16px 0 0">Then invoke it in your agent with <code>/copilot-mcp-app</code>,
+       or just describe your task — skills match on their description automatically.</p>
+  </section>
+</main>
+
+<footer class="wrap">
+  Skills are instruction sets, not executable code. Review before running anything
+  against a production tenant. · <a href="https://github.com/erturkm/ai-agent-skills" style="color:var(--cp-link)">github.com/erturkm/ai-agent-skills</a>
+</footer>
+
+<div id="toast"></div>
+<script>
+const q = document.getElementById('q'), grid = document.getElementById('grid');
+const cards = [...document.querySelectorAll('.card')];
+const empty = document.createElement('div');
+empty.className = 'empty'; empty.textContent = 'No skills match that filter.';
+q.addEventListener('input', () => {
+  const v = q.value.trim().toLowerCase();
+  let n = 0;
+  cards.forEach(c => {
+    const hit = !v || c.dataset.name.includes(v);
+    c.style.display = hit ? '' : 'none';
+    if (hit) n++;
+  });
+  if (!n && !empty.isConnected) grid.appendChild(empty);
+  if (n && empty.isConnected) empty.remove();
+});
+const toast = document.getElementById('toast');
+let t;
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-copy]');
+  if (!b) return;
+  const id = b.dataset.copy;
+  const cmd = `cp -R ai-agent-skills/skills/${id} ~/.copilot/m-skills/`;
+  navigator.clipboard.writeText(cmd).then(() => {
+    toast.textContent = 'Copied: ' + cmd;
+    toast.classList.add('on');
+    clearTimeout(t); t = setTimeout(() => toast.classList.remove('on'), 2600);
+  });
+});
+</script>
+</body></html>
