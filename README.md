@@ -18,6 +18,7 @@ have actually shipped the thing.
 | **[build-d365](skills/build-d365/SKILL.md)** | End-to-end Dynamics 365 / Power Platform demo engineering via the Dataverse Web API — schema, form XML surgery, model-driven apps, BPFs, Power Automate, Copilot Studio agents, PCF controls. |
 | **[cij-marketing](skills/cij-marketing/SKILL.md)** | Build Dynamics 365 Customer Insights – Journeys real-time marketing assets: segments, branded emails, content blocks, SMS, push and multi-touchpoint journeys. |
 | **[demo-video-producer](skills/demo-video-producer/SKILL.md)** | Turn a screen recording into a polished demo video — narration-synchronised cuts, AI voiceover, original music beds, branded outros. |
+| **[build-boq](skills/build-boq/SKILL.md)** | Build professional Microsoft licensing BoQs from ERP price workbooks and Excel templates, with exact SKU mapping, scenario pricing, formulas and validation. |
 
 ## Download as a single file
 
@@ -27,11 +28,12 @@ skill into a chat.
 
 | Download | Contents |
 |---|---|
-| **[all-skills.md](dist/all-skills.md)** (264 KB) | Every skill, every reference, in one file |
+| **[all-skills.md](dist/all-skills.md)** (273 KB) | Every skill, every reference, in one file |
 | [copilot-mcp-app.md](dist/copilot-mcp-app.md) (72 KB) | 6 files bundled |
 | [build-d365.md](dist/build-d365.md) (117 KB) | 6 files bundled |
 | [cij-marketing.md](dist/cij-marketing.md) (29 KB) | 1 file |
 | [demo-video-producer.md](dist/demo-video-producer.md) (45 KB) | 2 files bundled |
+| [build-boq.md](dist/build-boq.md) (9 KB) | 1 file |
 
 The per-skill bundles keep their YAML frontmatter, so they work as a drop-in skill directly:
 

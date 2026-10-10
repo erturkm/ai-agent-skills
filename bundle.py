@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parent
 SKILLS = ROOT / "skills"
 DIST = ROOT / "dist"
 
-ORDER = ["copilot-mcp-app", "build-d365", "cij-marketing", "demo-video-producer"]
+ORDER = ["copilot-mcp-app", "build-d365", "cij-marketing", "demo-video-producer", "build-boq"]
 
 FM = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 REFLINK = re.compile(r"(?<!\w)(?:\./)?(?:reference/)?([a-z0-9-]+\.md)(?!\w)", re.I)

@@ -18,5 +18,10 @@
     "id": "demo-video-producer",
     "files": 2,
     "bytes": 46100
+  },
+  {
+    "id": "build-boq",
+    "files": 1,
+    "bytes": 9286
   }
 ]
